@@ -4,41 +4,41 @@ import { Text, useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 const CITY_PERSPECTIVE = {
-  camera: [-0.46, 0.28, 3.02],
-  lookAt: [-0.08, 0, -0.16],
-  modelRotationY: 0.44,
-  modelPosition: [0.06, -0.42, -1.24],
+  camera: [-.46, 0.28, 3.02],
+  lookAt: [-0.1, 0, -0.16],
+  modelRotationY: 0.3,
+  modelPosition: [-1.2, -0.5, -1.24],
 }
 
-const LOGO_FONT = '/fonts/Orbitron-Bold.ttf'
 
-function NeonText({ children, position, fontSize, letterSpacing, color, outlineColor, outlineWidth, glowColor, glowScale = 1.14 }) {
+
+function NeonText({ children, position, font, fontSize, letterSpacing, color, outlineColor, outlineWidth, glowColor, glowScale = 1.14 }) {
   return (
     <group position={position}>
       <Text
-        position={[0, 0, -0.005]}
+        position={[0, 0, -0.002]}
         anchorX="center"
         anchorY="middle"
-        font={LOGO_FONT}
+        font={font}
         fontSize={fontSize * glowScale}
         letterSpacing={letterSpacing}
         color={glowColor}
         fillOpacity={0.42}
-        outlineWidth={outlineWidth * 1.7}
+        outlineWidth={outlineWidth * 2}
         outlineColor={glowColor}
         outlineOpacity={1}
         renderOrder={39}
-        material-depthTest={false}
-        material-depthWrite={false}
-        material-fog={false}
-        material-toneMapped={false}
+        material-depthTest={true}
+        material-depthWrite={true}
+        material-fog={true}
+        material-toneMapped={true}
       >
         {children}
       </Text>
       <Text
         anchorX="center"
         anchorY="middle"
-        font={LOGO_FONT}
+        font={font}
         fontSize={fontSize}
         letterSpacing={letterSpacing}
         color={color}
@@ -126,35 +126,38 @@ function CenterText3D({ reduceMotion, isMobile }) {
   });
 
   return (
-    <group ref={groupRef} position={[5, 0.25, 1.05]}>
+    <group ref={groupRef}>
       <NeonText
-        position={[0, 0.2, 0.09]}
+        position={[0, 0.1, 0.3]}
+        font="/fonts/BIRDMAN_.TTF"
         fontSize={0.21}
         letterSpacing={0.03}
         color="#8bffff"
         outlineColor="#0b2b4d"
-        outlineWidth={0.01}
+        outlineWidth={0.011}
         glowColor="#3fe7ff"
-        glowScale={1.28}
+        glowScale={1.01}
       >
         Twenty
       </NeonText>
       <NeonText
-        position={[0, 0, 0.09]}
+        position={[0, -0.1, 0.2]}
+        font="/fonts/BIRDMAN_.TTF"
         fontSize={0.21}
         letterSpacing={0.03}
         color="#8bffff"
         outlineColor="#0b2b4d"
-        outlineWidth={0.01}
+        outlineWidth={0.011}
         glowColor="#3fe7ff"
-        glowScale={1.28}
+        glowScale={1.01}
       >
         ever
       </NeonText>
       <NeonText
-        position={[0, 0, -0.2]}
-        fontSize={0.75}
-        letterSpacing={-0.02}
+        position={[0, 0, -0.5]}
+        font="/fonts/eyelevation6.ttf"
+        fontSize={1.1}
+        letterSpacing={0.04}
         color="#ff9bff"
         outlineColor="#320d4c"
         outlineWidth={0.016}
@@ -163,18 +166,19 @@ function CenterText3D({ reduceMotion, isMobile }) {
       >
         24
       </NeonText>
-        <NeonText
-          position={[0, -0.26, 0.02]}
-          fontSize={0.105}
-          letterSpacing={0.05}
-          color="#1bff39"
-          outlineColor="#0f3d2f"
-          outlineWidth={0.006}
-          glowColor="rgb(169, 255, 130)"
-          glowScale={1.24}
-        >
-          Getränke & Snacks
-        </NeonText>
+      <NeonText
+        position={[0, -0.4, 0.02]}
+        font="/fonts/Orbitron-Bold.ttf"
+        fontSize={0.08}
+        letterSpacing={0.2}
+        color="#1bff39"
+        outlineColor="#0f3d2f"
+        outlineWidth={0.006}
+        glowColor="rgb(169, 255, 130)"
+        glowScale={1.1}
+      >
+        GETRÄNKE & SNACKS
+      </NeonText>
     </group>
   )
 }
